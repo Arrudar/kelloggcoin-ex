@@ -66,17 +66,14 @@ for transaction in blockchain
   receiver = transaction["to_user"]
   amount = transaction["amount"]
   
-  #for users in wallets
    
     if sender
       wallets[sender] -= amount
-    #elsif wallets["users"] == receiver
-     # wallets["amount"] = wallets["amount"] + amount
     end
   
-  #end
   wallets[receiver] += amount
 
+  #puts wallets
 end
 
 puts "wallets after transactions"
