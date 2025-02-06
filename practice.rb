@@ -27,3 +27,65 @@ blockchain = [
 # Anthony's KelloggCoin balance is 2650
 
 # 👇👇👇 Your code HERE 👇👇👇
+
+#print transactions
+
+puts blockchain
+puts ""
+
+#confirm unique users and create wallets for them with name and amount (starting with zero)
+
+users = []
+
+for transaction in blockchain
+  new_user = "#{transaction["to_user"]}"
+  users.push (new_user)
+end
+
+unique_users = users.uniq
+
+puts "users of this systems"
+puts unique_users
+puts ""
+
+wallets = {}
+
+for user in unique_users
+  wallets[user] = 0
+end
+
+puts "wallets created"
+puts wallets
+puts ""
+
+#Calculate balance per transaction
+
+for transaction in blockchain
+  
+  sender = transaction["from_user"]
+  receiver = transaction["to_user"]
+  amount = transaction["amount"]
+  
+  #for users in wallets
+   
+    if sender
+      wallets[sender] -= amount
+    #elsif wallets["users"] == receiver
+     # wallets["amount"] = wallets["amount"] + amount
+    end
+  
+  #end
+  wallets[receiver] += amount
+
+end
+
+puts "wallets after transactions"
+puts wallets
+puts ""
+puts "----------"
+puts "Result:"
+
+for names in wallets
+  puts "#{names[0].capitalize}'s KelloggCoin balance is #{names[1]} ."
+end 
+puts ""
